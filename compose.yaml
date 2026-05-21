@@ -1,1 +1,26 @@
-services: { }
+services:
+
+  mongodb:
+    image: mongo:8
+    container_name: workshopmongo-mongodb
+
+    restart: unless-stopped
+
+    ports:
+      - "27017:27017"
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+    volumes:
+      - mongodb_data:/data/db
+
+    networks:
+      - workshopmongo-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  workshopmongo-network:
