@@ -1,11 +1,10 @@
 package br.dev.hfbatista.workshopmongo.repositories;
 
 import br.dev.hfbatista.workshopmongo.models.UserEntity;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends MongoRepository<UserEntity, ObjectId> {
+public interface UserRepository extends MongoRepository<UserEntity, String> {
 
 }
