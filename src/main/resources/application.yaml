@@ -1,3 +1,15 @@
 spring:
   application:
     name: workshopmongo
+
+  data:
+    mongodb:
+      uri: mongodb://admin:admin@localhost:27017/workshopmongo?authSource=admin
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+    org.mongodb.driver: INFO
