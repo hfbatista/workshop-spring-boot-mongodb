@@ -50,4 +50,12 @@ class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateUser(@PathVariable String id, @RequestBody UserDTO userDTO) {
+        UserEntity user = this.userService.fromDTO(userDTO);
+        user.setId(id);
+        this.userService.updateUser(user);
+        return ResponseEntity.noContent().build();
+    }
+
 }
