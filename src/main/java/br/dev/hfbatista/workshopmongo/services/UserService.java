@@ -1,5 +1,6 @@
 package br.dev.hfbatista.workshopmongo.services;
 
+import br.dev.hfbatista.workshopmongo.models.UserDTO;
 import br.dev.hfbatista.workshopmongo.models.UserEntity;
 import br.dev.hfbatista.workshopmongo.repositories.UserRepository;
 import br.dev.hfbatista.workshopmongo.excepitions.ObjectNotFoundException;
@@ -22,5 +23,13 @@ public class UserService {
     public UserEntity findUserById(String id) {
          Optional<UserEntity> user = this.userRepository.findById(id);
          return user.orElseThrow(() -> new ObjectNotFoundException("Este usuário não existe!!"));
+    }
+
+    public UserEntity insert(UserEntity user) {
+        return userRepository.insert(user);
+    }
+
+    public UserEntity fromDTO(UserDTO userDTO) {
+        return new UserEntity(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
 }
