@@ -25,8 +25,13 @@ public class UserService {
          return user.orElseThrow(() -> new ObjectNotFoundException("Este usuário não existe!!"));
     }
 
-    public UserEntity insert(UserEntity user) {
+    public UserEntity insertUser(UserEntity user) {
         return userRepository.insert(user);
+    }
+
+    public void deleteUser(String id) {
+        findUserById(id);
+        userRepository.deleteById(id);
     }
 
     public UserEntity fromDTO(UserDTO userDTO) {

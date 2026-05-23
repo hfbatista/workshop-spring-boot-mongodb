@@ -39,10 +39,15 @@ class UserController {
     @PostMapping
     public ResponseEntity<Void> inserUser(@RequestBody UserDTO userDTO) {
         UserEntity user = this.userService.fromDTO(userDTO);
-        user = this.userService.insert(user);
+        user = this.userService.insertUser(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable String id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
